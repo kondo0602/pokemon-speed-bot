@@ -34,23 +34,13 @@ const handleEvent = async (event: line.WebhookEvent) => {
 
   const pokemon = findPokemonData(targetPokemonName);
 
-  if (!pokemon) {
-    return client.replyMessage(event.replyToken, {
-      type: "text",
-      text: "まだSVに実装されていないポケモンのようです...。",
-    });
-  }
-
-  const response = `すばやさ種族値: ${pokemon.s}
-最速スカーフ: ${pokemon.maxSpeedWithScarf}
-最速: ${pokemon.maxSpeed}
-準速: ${pokemon.secondSpeed}
-無振: ${pokemon.noAdjustment}
-最遅: ${pokemon.minSpeed}`;
+  const responseMessage = pokemon
+    ? formatResponseMessage(pokemon)
+    : "SV未実装のポケモンです...";
 
   return client.replyMessage(event.replyToken, {
     type: "text",
-    text: response,
+    text: responseMessage,
   });
 };
 
@@ -71,4 +61,8 @@ const findPokemonData = (pokemonName: string): Pokemon => {
   });
 
   return pokemon;
+};
+
+const formatResponseMessage = (pokemon: Pokemon): string => {
+  return `すばやさ種族値: ${pokemon.s}\n------------------\n最速スカーフ: ${pokemon.maxSpeedWithScarf}\n最速: ${pokemon.maxSpeed}\n準速: ${pokemon.secondSpeed}\n無振: ${pokemon.noAdjustment}\n最遅: ${pokemon.minSpeed}`;
 };
