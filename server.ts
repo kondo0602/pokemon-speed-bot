@@ -3,6 +3,7 @@ import express from "express";
 import * as line from "@line/bot-sdk";
 const PORT = process.env.PORT || 3000;
 require("dotenv").config();
+import { Pokemon } from "./Pokemon";
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.post(
   }
 );
 
-const handleEvent = async (event: any) => {
+const handleEvent = async (event: line.WebhookEvent) => {
   if (event.type !== "message" || event.message.type !== "text") {
     return Promise.resolve(null);
   }
@@ -57,15 +58,15 @@ app.listen(PORT);
 console.log(`Server running at ${PORT}`);
 
 const convertHiraganaToKana = (hiragana: string): string => {
-  return hiragana.replace(/[ぁ-ん]/g, (s: any) => {
+  return hiragana.replace(/[ぁ-ん]/g, (s: string) => {
     return String.fromCharCode(s.charCodeAt(0) + 0x60);
   });
 };
 
-const findPokemonData = (pokemonName: string): any => {
+const findPokemonData = (pokemonName: string): Pokemon => {
   const json = require("./sv_pokemon_status.json");
 
-  const pokemon = json.find((pokemon: any) => {
+  const pokemon = json.find((pokemon: Pokemon) => {
     if (pokemonName === pokemon.name) return pokemon;
   });
 
