@@ -4,8 +4,8 @@
 const express = require("express");
 const line = require("@line/bot-sdk");
 const PORT = process.env.PORT || 3000;
-const fs = require("fs");
-const csv = require("csvtojson");
+// const fs = require("fs");
+// const csv = require("csvtojson");
 require("dotenv").config();
 
 const config = {
@@ -29,16 +29,6 @@ async function handleEvent(event) {
   if (event.type !== "message" || event.message.type !== "text") {
     return Promise.resolve(null);
   }
-
-  csv()
-    .fromFile("./sv_pokemon_status.csv")
-    .then((jsonObj) => {
-      fs.writeFile("./data.json", JSON.stringify(jsonObj), "utf8", (error) => {
-        if (error) {
-          console.log(JSON.stringify(error));
-        }
-      });
-    });
 
   const json = require("./data.json");
 
