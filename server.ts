@@ -1,29 +1,30 @@
 // @see: https://altema.jp/pokemonsv/syuzokuchi_list
-"use strict";
-
-const express = require("express");
-const line = require("@line/bot-sdk");
+import express from "express";
+import * as line from "@line/bot-sdk";
 const PORT = process.env.PORT || 3000;
 require("dotenv").config();
 
-const config = {
-  channelSecret: process.env.CHANNEL_SECRET,
-  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
-};
-
 const app = express();
 
-app.post("/webhook", line.middleware(config), (req, res) => {
-  console.log(req.body.events);
-
-  Promise.all(req.body.events.map(handleEvent)).then((result) =>
-    res.json(result)
-  );
-});
-
+const config: line.ClientConfig & line.MiddlewareConfig = {
+  channelSecret: process.env.CHANNEL_SECRET as string,
+  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN as string,
+};
 const client = new line.Client(config);
 
-async function handleEvent(event) {
+app.post(
+  "/webhook",
+  line.middleware(config),
+  (req: express.Request, res: express.Response) => {
+    console.log(req.body.events);
+
+    Promise.all(req.body.events.map(handleEvent)).then((result) =>
+      res.json(result)
+    );
+  }
+);
+
+const handleEvent = async (event: any) => {
   if (event.type !== "message" || event.message.type !== "text") {
     return Promise.resolve(null);
   }
@@ -50,21 +51,21 @@ async function handleEvent(event) {
     type: "text",
     text: response,
   });
-}
+};
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
 
-const convertHiraganaToKana = (hiragana) => {
-  return hiragana.replace(/[ぁ-ん]/g, function (s) {
+const convertHiraganaToKana = (hiragana: string): string => {
+  return hiragana.replace(/[ぁ-ん]/g, (s: any) => {
     return String.fromCharCode(s.charCodeAt(0) + 0x60);
   });
 };
 
-const findPokemonData = (pokemonName) => {
+const findPokemonData = (pokemonName: string): any => {
   const json = require("./sv_pokemon_status.json");
 
-  const pokemon = json.find((pokemon) => {
+  const pokemon = json.find((pokemon: any) => {
     if (pokemonName === pokemon.name) return pokemon;
   });
 
