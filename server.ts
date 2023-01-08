@@ -28,18 +28,9 @@ async function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  const json = require("./data.json");
+  const targetPokemonName = convertHiraganaToKana(event.message.text).trim();
 
-  const targetPokemonName = event.message.text.replace(
-    /[ぁ-ん]/g,
-    function (s) {
-      return String.fromCharCode(s.charCodeAt(0) + 0x60);
-    }
-  );
-
-  const pokemon = json.find((pokemon) => {
-    if (targetPokemonName === pokemon.name) return pokemon;
-  });
+  const pokemon = findPokemonData(targetPokemonName);
 
   if (!pokemon) {
     return client.replyMessage(event.replyToken, {
@@ -63,3 +54,19 @@ async function handleEvent(event) {
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
+
+const convertHiraganaToKana = (hiragana) => {
+  return hiragana.replace(/[ぁ-ん]/g, function (s) {
+    return String.fromCharCode(s.charCodeAt(0) + 0x60);
+  });
+};
+
+const findPokemonData = (pokemonName) => {
+  const json = require("./sv_pokemon_status.json");
+
+  const pokemon = json.find((pokemon) => {
+    if (pokemonName === pokemon.name) return pokemon;
+  });
+
+  return pokemon;
+};
