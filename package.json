@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/bin/www.ts",
     "ts.check": "tsc --project tsconfig.json",
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc && tsc-alias",
     "add-build": "git add dist",
     "test": "jest",
     "deploy": "npm run build && vercel deploy --prod"
@@ -35,6 +35,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
     "tsconfig-paths": "^4.1.2",
     "typescript": "^4.9.4"
   }
