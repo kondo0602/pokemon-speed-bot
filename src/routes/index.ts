@@ -15,8 +15,10 @@ router.post(
   (req: express.Request, res: express.Response) => {
     console.log(req.body.events);
 
-    Promise.all(req.body.events.map(handleEvent)).then((result) =>
-      res.json(result)
-    );
+    Promise.all(req.body.events.map(handleEvent))
+      .then((result) => res.json(result))
+      .catch((error) => {
+        console.log(error);
+      });
   }
 );

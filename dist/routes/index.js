@@ -35,5 +35,9 @@ const index_1 = require("@/pokemon/index");
 exports.router.get("/", (req, res) => res.send("Hello LINE BOT"));
 exports.router.post("/webhook", line.middleware(config_1.config), (req, res) => {
     console.log(req.body.events);
-    Promise.all(req.body.events.map(index_1.handleEvent)).then((result) => res.json(result));
+    Promise.all(req.body.events.map(index_1.handleEvent))
+        .then((result) => res.json(result))
+        .catch((error) => {
+        console.log(error);
+    });
 });
