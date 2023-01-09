@@ -5,6 +5,10 @@ import * as line from "@line/bot-sdk";
 import { config } from "@/pokemon/config";
 import { handleEvent } from "@/pokemon/index";
 
+router.get("/", (req: express.Request, res: express.Response) =>
+  res.send("Hello LINE BOT")
+);
+
 router.post(
   "/webhook",
   line.middleware(config),
