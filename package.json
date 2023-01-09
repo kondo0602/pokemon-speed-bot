@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node -r tsconfig-paths/register src/bin/www.ts",
+    "start": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
     "ts.check": "tsc --project tsconfig.json",
     "build": "rimraf dist && tsc && tsc-alias",
     "add-build": "git add dist",

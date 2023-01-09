@@ -7,4 +7,8 @@ exports.app = void 0;
 const express_1 = __importDefault(require("express"));
 const routes_1 = require("./routes");
 exports.app = (0, express_1.default)();
+const port = process.env.PORT || 3000;
 exports.app.use(routes_1.router);
+exports.app.listen(port, () => {
+    return console.log(`Server running at ${port}`);
+});
