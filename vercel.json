@@ -1,17 +1,16 @@
 {
-  "name": "pokemon-speed-bot",
   "version": 2,
   "public": true,
   "builds": [
     {
-      "src": "src/app.ts",
+      "src": "dist/app.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/src/app.ts"
+      "src": "/.*",
+      "dest": "/dist/app.ss"
     }
   ]
 }

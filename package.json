@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/bin/www.ts",
-    "test": "jest"
+    "build": "rimraf dist && tsc",
+    "test": "jest",
+    "deploy": "npm run build && vercel --prod"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,7 @@
     "@types/node": "^18.11.18",
     "csvtojson": "^2.0.10",
     "jest": "^29.3.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
