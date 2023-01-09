@@ -1,4 +1,4 @@
-import { app } from "@/app";
+import { app } from "api/app";
 
 const PORT = process.env.PORT || 3000;
 
