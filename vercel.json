@@ -1,3 +1,17 @@
 {
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+  "name": "pokemon-speed-bot",
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "src/app.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/app.ts"
+    }
+  ]
 }
