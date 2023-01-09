@@ -1,6 +1,7 @@
 // @see: https://altema.jp/pokemonsv/syuzokuchi_list
 import * as line from "@line/bot-sdk";
 import { Pokemon } from "./types/pokemon";
+import { convertHiraganaToKana } from "./util/convertHiraganaToKana";
 import { config } from "./config";
 
 const client = new line.Client(config);
@@ -21,12 +22,6 @@ export const handleEvent = async (event: line.WebhookEvent) => {
   return client.replyMessage(event.replyToken, {
     type: "text",
     text: responseMessage,
-  });
-};
-
-const convertHiraganaToKana = (hiragana: string): string => {
-  return hiragana.replace(/[ぁ-ん]/g, (s: string) => {
-    return String.fromCharCode(s.charCodeAt(0) + 0x60);
   });
 };
 
