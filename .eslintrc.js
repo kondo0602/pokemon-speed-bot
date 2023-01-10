@@ -1,11 +1,12 @@
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "jest"],
   env: {
     browser: true,
     es2021: true,
     node: true,
+    "jest/globals": true,
   },
   parserOptions: {
     ecmaVersion: "latest",
