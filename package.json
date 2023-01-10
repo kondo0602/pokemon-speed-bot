@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
+    "lint": "eslint . --fix",
     "ts.check": "tsc --project tsconfig.json",
     "build": "rimraf dist && tsc && tsc-alias",
     "add-build": "git add dist",

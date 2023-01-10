@@ -37,7 +37,7 @@ exports.router.post("/webhook", line.middleware(config_1.config), (req, res) => 
     // console.log(req.body.events);
     Promise.all(req.body.events.map(index_1.handleEvent))
         .then((result) => res.json(result))
-        .catch(() => {
-        // console.log(error);
+        .catch((error) => {
+        console.log(error);
     });
 });

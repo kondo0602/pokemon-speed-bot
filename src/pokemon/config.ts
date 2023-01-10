@@ -1,5 +1,6 @@
 import * as line from "@line/bot-sdk";
 import * as dotenv from "dotenv";
+
 dotenv.config();
 
 export const config: line.ClientConfig & line.MiddlewareConfig = {

@@ -453,7 +453,7 @@ describe.each([
   ["ヒバニー", ""],
   ["ラビフット", ""],
   ["エースバーン", ""],
-])("findPokemonData", (pokemonName, _) => {
+])("findPokemonData", (pokemonName) => {
   test(`入力が「${pokemonName}」であるとき、${pokemonName}のデータが返ること`, () => {
     expect(findPokemonData(pokemonName)).toEqual(
       expect.objectContaining({ name: pokemonName })
