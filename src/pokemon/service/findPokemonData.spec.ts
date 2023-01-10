@@ -455,12 +455,12 @@ describe.each([
   ["エースバーン", ""],
 ])("findPokemonData", (pokemonName) => {
   test(`入力が「${pokemonName}」であるとき、${pokemonName}のデータが返ること`, () => {
-    expect(findPokemonData(pokemonName)).toEqual(
+    expect(findPokemonData(pokemonName)).toContainEqual(
       expect.objectContaining({ name: pokemonName })
     );
   });
 });
 
-test("実装されていないポケモンの名前が入力された場合,nullが返ること", () => {
-  expect(findPokemonData("カメックス")).toBe(null);
+test("実装されていないポケモンの名前が入力された場合,空配列が返ること", () => {
+  expect(findPokemonData("カメックス")).toEqual([]);
 });

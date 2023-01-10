@@ -44,9 +44,9 @@ const handleEvent = (event) => __awaiter(void 0, void 0, void 0, function* () {
         return Promise.resolve(null);
     }
     const targetPokemonName = (0, convertHiraganaToKana_1.convertHiraganaToKana)(event.message.text).trim();
-    const pokemon = (0, findPokemonData_1.findPokemonData)(targetPokemonName);
-    const responseMessage = pokemon
-        ? (0, formatResponseMessage_1.formatResponseMessage)(pokemon)
+    const pokemonData = (0, findPokemonData_1.findPokemonData)(targetPokemonName);
+    const responseMessage = pokemonData.length !== 0
+        ? (0, formatResponseMessage_1.formatResponseMessage)(pokemonData)
         : "SV未実装のポケモンです...";
     return client.replyMessage(event.replyToken, {
         type: "text",

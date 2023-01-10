@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.findPokemonData = void 0;
 const pokemon_status_json_1 = __importDefault(require("./pokemon_status.json"));
 const findPokemonData = (pokemonName) => {
-    const pokemon = pokemon_status_json_1.default.find((pokemonData) => pokemonName === pokemonData.name);
-    return pokemon !== null && pokemon !== void 0 ? pokemon : null;
+    return pokemon_status_json_1.default.filter((pokemonData) => pokemonName === pokemonData.name);
 };
 exports.findPokemonData = findPokemonData;

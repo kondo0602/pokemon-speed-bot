@@ -13,11 +13,12 @@ export const handleEvent = async (event: line.WebhookEvent) => {
 
   const targetPokemonName = convertHiraganaToKana(event.message.text).trim();
 
-  const pokemon = findPokemonData(targetPokemonName);
+  const pokemonData = findPokemonData(targetPokemonName);
 
-  const responseMessage = pokemon
-    ? formatResponseMessage(pokemon)
-    : "SV未実装のポケモンです...";
+  const responseMessage =
+    pokemonData.length !== 0
+      ? formatResponseMessage(pokemonData)
+      : "SV未実装のポケモンです...";
 
   return client.replyMessage(event.replyToken, {
     type: "text",
