@@ -1,5 +1,6 @@
 export type Pokemon = {
   name: string;
+  displayName: string;
   h: string;
   a: string;
   b: string;

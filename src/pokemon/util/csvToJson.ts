@@ -2,8 +2,8 @@ import fs from "fs";
 import csv from "csvtojson";
 
 const csvToJson = () => {
-  const INPUT_CSV_PATH = "../pokemon_status.csv";
-  const OUTPUT_JSON_PATH = "../pokemon_status.json";
+  const INPUT_CSV_PATH = "../service/pokemon_status.csv";
+  const OUTPUT_JSON_PATH = "../service/pokemon_status.json";
 
   csv()
     .fromFile(INPUT_CSV_PATH)

@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const csvtojson_1 = __importDefault(require("csvtojson"));
 const csvToJson = () => {
-    const INPUT_CSV_PATH = "../pokemon_status.csv";
-    const OUTPUT_JSON_PATH = "../pokemon_status.json";
+    const INPUT_CSV_PATH = "../service/pokemon_status.csv";
+    const OUTPUT_JSON_PATH = "../service/pokemon_status.json";
     (0, csvtojson_1.default)()
         .fromFile(INPUT_CSV_PATH)
         .then((jsonObj) => {
