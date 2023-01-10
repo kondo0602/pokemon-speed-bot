@@ -28,16 +28,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
-exports.router = express_1.default.Router();
 const line = __importStar(require("@line/bot-sdk"));
 const config_1 = require("../pokemon/config");
 const index_1 = require("../pokemon/index");
+exports.router = express_1.default.Router();
 exports.router.get("/", (req, res) => res.send("Hello LINE BOT"));
 exports.router.post("/webhook", line.middleware(config_1.config), (req, res) => {
-    console.log(req.body.events);
+    // console.log(req.body.events);
     Promise.all(req.body.events.map(index_1.handleEvent))
         .then((result) => res.json(result))
-        .catch((error) => {
-        console.log(error);
+        .catch(() => {
+        // console.log(error);
     });
 });
