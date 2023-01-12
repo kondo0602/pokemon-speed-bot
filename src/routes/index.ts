@@ -7,7 +7,7 @@ import { handleEvent } from "@/pokemon/index";
 export const router = express.Router();
 
 router.get("/", (req: express.Request, res: express.Response) =>
-  res.send("Hello LINE BOT")
+  res.send("DEV TEST")
 );
 
 router.post(
