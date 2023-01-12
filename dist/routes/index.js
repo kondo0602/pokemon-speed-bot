@@ -32,7 +32,9 @@ const line = __importStar(require("@line/bot-sdk"));
 const config_1 = require("../pokemon/config");
 const index_1 = require("../pokemon/index");
 exports.router = express_1.default.Router();
-exports.router.get("/", (req, res) => res.send("Hello LINE BOT"));
+exports.router.get("/", (req, res) => process.env.NODE_ENV === "PRODUCTION"
+    ? res.send("Hello LINE BOT")
+    : res.send("Hello LINE BOT (DEV)"));
 exports.router.post("/webhook", line.middleware(config_1.config), (req, res) => {
     // console.log(req.body.events);
     Promise.all(req.body.events.map(index_1.handleEvent))
