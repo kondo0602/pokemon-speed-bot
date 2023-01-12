@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
+    "start:dev": "nodemon -r dotenv/config --exec ts-node -r tsconfig-paths/register src/app.ts dotenv_config_path=.env.development.local",
     "lint": "eslint . --fix",
     "ts.check": "tsc --project tsconfig.json",
     "build": "rimraf dist && tsc && tsc-alias",
@@ -32,6 +33,7 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
+    "@vercel/node": "^2.8.6",
     "csvtojson": "^2.0.10",
     "eslint": "^8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
