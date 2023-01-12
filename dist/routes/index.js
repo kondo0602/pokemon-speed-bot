@@ -27,16 +27,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
-const dotenv = __importStar(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const line = __importStar(require("@line/bot-sdk"));
 const config_1 = require("../pokemon/config");
 const index_1 = require("../pokemon/index");
-dotenv.config();
 exports.router = express_1.default.Router();
-exports.router.get("/", (req, res) => process.env.NODE_ENV === "PRODUCTION"
-    ? res.send("Hello LINE BOT")
-    : res.send("Hello LINE BOT (DEV)"));
+// router.get("/", (req: express.Request, res: express.Response) =>
+//   process.env.NODE_ENV === "PRODUCTION"
+//     ? res.send("Hello LINE BOT")
+//     : res.send("Hello LINE BOT (DEV)")
+// );
 exports.router.post("/webhook", line.middleware(config_1.config), (req, res) => {
     // console.log(req.body.events);
     Promise.all(req.body.events.map(index_1.handleEvent))

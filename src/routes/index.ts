@@ -6,11 +6,11 @@ import { handleEvent } from "@/pokemon/index";
 
 export const router = express.Router();
 
-router.get("/", (req: express.Request, res: express.Response) =>
-  process.env.NODE_ENV === "PRODUCTION"
-    ? res.send("Hello LINE BOT")
-    : res.send("Hello LINE BOT (DEV)")
-);
+// router.get("/", (req: express.Request, res: express.Response) =>
+//   process.env.NODE_ENV === "PRODUCTION"
+//     ? res.send("Hello LINE BOT")
+//     : res.send("Hello LINE BOT (DEV)")
+// );
 
 router.post(
   "/webhook",
