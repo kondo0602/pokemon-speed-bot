@@ -13,7 +13,7 @@
 
 // import { VercelRequest, VercelResponse } from "@vercel/node";
 import { NextApiRequest, NextApiResponse } from "next";
-import { handleEvent } from "../../src/pokemon";
+import { handleEvent } from "../../pokemon";
 import * as line from "@line/bot-sdk";
 // import type { VercelRequest, VercelResponse } from "@vercel/node";
 // import { handleEvent } from "../../src/pokemon/handler";
