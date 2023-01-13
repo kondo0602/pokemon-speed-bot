@@ -1,1 +1,0 @@
-export { handleEvent } from "./handler";
