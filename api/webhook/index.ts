@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import line from "@line/bot-sdk";
+import * as line from "@line/bot-sdk";
 import * as dotenv from "dotenv";
 
 dotenv.config();
