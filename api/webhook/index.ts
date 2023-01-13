@@ -19,7 +19,7 @@ export const config: line.ClientConfig = {
 
 const client = new line.Client(config);
 
-async function handleEvent(event) {
+async function handleEvent(event: line.WebhookEvent) {
   if (event.type !== "message" || event.message.type !== "text") {
     return Promise.resolve(null);
   }
