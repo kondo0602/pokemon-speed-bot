@@ -13,11 +13,6 @@
     "test": "jest",
     "deploy": "npm run build && vercel deploy --prod"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
