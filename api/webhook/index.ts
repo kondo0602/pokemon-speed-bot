@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import * as line from "@line/bot-sdk";
-import { middlewareConfig } from "@/lib/line/config";
-import { handleEvent } from "@/pokemon";
+import { middlewareConfig } from "../../src/lib/line/config";
+import { handleEvent } from "../../src/pokemon";
 
 // @see: https://nextjs-ja-translation-docs.vercel.app/docs/api-routes/api-middlewares
 function runMiddleware(
