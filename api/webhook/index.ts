@@ -7,7 +7,7 @@ import { middlewareConfig } from "@/lib/line/config";
 function runMiddleware(
   req: NextApiRequest,
   res: NextApiResponse,
-  middleware: Function
+  middleware: any
 ) {
   return new Promise((resolve, reject) => {
     middleware(req, res, (result: any) => {

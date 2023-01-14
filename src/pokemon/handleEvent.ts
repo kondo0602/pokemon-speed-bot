@@ -1,5 +1,5 @@
 import * as line from "@line/bot-sdk";
-import { convertHiraganaToKana } from "../../util/convertHiraganaToKana";
+import { convertHiraganaToKana } from "../util/convertHiraganaToKana";
 import { clientConfig } from "../lib/line/config";
 import { findPokemonData } from "./service/findPokemonData";
 import { formatResponseMessage } from "./service/formatResponseMessage";
