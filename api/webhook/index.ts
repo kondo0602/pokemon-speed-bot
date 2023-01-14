@@ -4,9 +4,13 @@ import * as line from "@line/bot-sdk";
 import { middlewareConfig } from "@/lib/line/config";
 
 // @see: https://nextjs-ja-translation-docs.vercel.app/docs/api-routes/api-middlewares
-function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: any) {
+function runMiddleware(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  middleware: Function
+) {
   return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
+    middleware(req, res, (result: any) => {
       if (result instanceof Error) {
         return reject(result);
       }
