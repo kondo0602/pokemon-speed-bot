@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import * as line from "@line/bot-sdk";
+import { NextApiRequest, NextApiResponse } from "next";
 import { middlewareConfig } from "../../src/lib/line/config";
 import { handleEvent } from "../../src/pokemon";
 
