@@ -4,19 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
     "lint": "eslint . --fix",
-    "ts.check": "tsc --project tsconfig.json",
-    "build": "rimraf dist && tsc && tsc-alias",
-    "add-build": "git add dist",
-    "test": "jest",
-    "deploy": "npm run build && vercel deploy --prod"
+    "test": "jest"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,27 +14,23 @@
     "@line/bot-sdk": "^7.5.2",
     "csv": "^6.2.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "next": "^13.1.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.15",
     "@types/jest": "^29.2.5",
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "csvtojson": "^2.0.10",
     "eslint": "^8.31.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^27.2.1",
     "jest": "^29.3.1",
-    "pre-commit": "^1.2.2",
-    "rimraf": "^3.0.2",
+    "prettier": "^2.8.3",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
-    "tsc-alias": "^1.8.2",
     "tsconfig-paths": "^4.1.2",
     "typescript": "^4.9.4"
   }

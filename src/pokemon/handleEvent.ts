@@ -1,10 +1,10 @@
 import * as line from "@line/bot-sdk";
-import { convertHiraganaToKana } from "./util/convertHiraganaToKana";
-import { config } from "./config";
+import { clientConfig } from "../lib/line/config";
+import { convertHiraganaToKana } from "../util/convertHiraganaToKana";
 import { findPokemonData } from "./service/findPokemonData";
 import { formatResponseMessage } from "./service/formatResponseMessage";
 
-const client = new line.Client(config);
+const client = new line.Client(clientConfig);
 
 export const handleEvent = async (event: line.WebhookEvent) => {
   if (event.type !== "message" || event.message.type !== "text") {

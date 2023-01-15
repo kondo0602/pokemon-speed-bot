@@ -1,1 +1,1 @@
-export { handleEvent } from "./handler";
+export * from "./handleEvent";
